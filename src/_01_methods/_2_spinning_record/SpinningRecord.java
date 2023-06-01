@@ -41,7 +41,7 @@ public class SpinningRecord extends PApplet {
     
     Song song = new Song("awesomeTrack.mp3");
     PImage pictureOfRecord;
-    
+    int timesspun = 0;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -49,12 +49,22 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void setup() {
-        
+    	pictureOfRecord = loadImage("images/record.png");
+    	pictureOfRecord.resize(600,600);
+    	image(pictureOfRecord, 0, 0);
     }
 
     @Override
     public void draw() {
-        
+    if (mousePressed) {
+    	song.play();
+     timesspun +=5;
+     rotateImage(pictureOfRecord, timesspun);
+     image(pictureOfRecord, 0, 0);
+    }
+    else {
+    	song.stop();
+    }
     }
 
     static public void main(String[] args) {
