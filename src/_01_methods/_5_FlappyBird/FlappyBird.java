@@ -13,7 +13,10 @@ public class FlappyBird extends PApplet {
 
     @Override
     public void setup() {
-        
+    	background(0, 0, 100);
+    	fill(255,255,0);
+    	stroke(0, 0, 0);
+    	ellipse(50, 300, 20, 20);
     }
 
     @Override
