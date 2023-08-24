@@ -2,6 +2,8 @@ package _01_methods._5_FlappyBird;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -19,6 +21,7 @@ Random height2 = new Random();
 int heightposition = height2.nextInt(600);
 int gap = 250;
 int score = 0;
+boolean gameover = false;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -38,6 +41,7 @@ int score = 0;
 
     @Override
     public void draw() {
+    	
     	if (x2 == 0) {
     		x2 = 800;
     		heightposition = height2.nextInt(300)+100;
@@ -46,16 +50,34 @@ int score = 0;
     	
     	background(bg);
     	text("Score: "+ score, 10,10);
+    	text("Game Over: " + gameover, 700, 10);
     	image(fb, x, y);
     	fill(0, 255, 0);
     	rect(x2, 0, 100, heightposition);
     	rect(x2, heightposition+gap, 100, 700);
+    	rect(0, 600, 800, 200);
     	y = y-birdYVelocity;
     	birdYVelocity = birdYVelocity - gravity;
     	x2 -= 5;
-    	if (intersectsPipes()) {
+    	if (intersectsPipes() || y > 600) {
+    		gameover = true;
+        	text("Game Over: " + gameover, 500, 10);
+
     		score = 0;
+    		JOptionPane.showMessageDialog(null, "Game Over");
+    		gameover = false;
+    		birdYVelocity = 0;
+    		x = 70;
+    		y = 300;
+        	x2=800;
+        	
+    		heightposition = height2.nextInt(300)+100;
+
+        	
+        	
+
     	}
+    	
     }
 
     static public void main(String[] args) {
