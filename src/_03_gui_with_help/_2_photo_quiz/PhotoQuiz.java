@@ -38,22 +38,35 @@ public class PhotoQuiz {
 		// 6. ask a question that relates to the image
 		String input = JOptionPane.showInputDialog("Are monkeys your favorite animal?");
 		// 7. print "CORRECT" if the user gave the right answer
-
+		if (input.equals("yes")) {
+			System.out.println("CORRECT");
+		}
+		else {
+			System.out.println("INCORRECT");
+		}
 		// 8. print "INCORRECT" if the answer is wrong
 
 		// 9. remove the component from the quiz window (you may not see the
 		// effect of this until step 12)
-
+		monke.remove(null);
 		// 10. find another image and create it (might take more than one line
 		// of code)
-
+		String nextimage = "129.png";
 		// 11. add the second image to the quiz window
-
+		Component magikarp;
+		magikarp = createImage(adress);
+		quizWindow.add(magikarp);
 		// 12. pack the quiz window
-
+		quizWindow.pack();
 		// 13. ask another question
-
+		String input2 = JOptionPane.showInputDialog("Is magikarp the best pokemon?");
 		// 14+ check answer, say if correct or incorrect, etc.
+		if (input2.equals("yes")) {
+			System.out.println("CORRECT I LOVE U");
+		}
+		else {
+			System.out.println("LEAVE");
+		}
 
 	}
 
