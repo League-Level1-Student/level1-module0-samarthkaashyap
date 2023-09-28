@@ -18,7 +18,9 @@ import game_tools.Sound;
 public class DrumKit implements MouseListener {
     static boolean canPlaySounds = true; // Set this to false if your computer cannot play sounds
     JLabel drumLabel;
-  
+	Component drum;
+	Component cymbal;
+
 
     public void run() {
         //  Make a JFrame variable and initialize it using "new JFrame()"
@@ -40,9 +42,7 @@ public class DrumKit implements MouseListener {
     	String drumaddress = "snare.jpg";
     	String cymbaladress = "400XS01-large.jpeg";
         //  Put the name of the drum image file in a String variable.
-    	Component drum;
 		drum = createLabelImage(drumaddress);
-		Component cymbal;
 		cymbal = createLabelImage(cymbaladress);
 
         //  Edit the next line to use your String variable
@@ -54,8 +54,10 @@ public class DrumKit implements MouseListener {
         //  Call the pack() method on the frame.
         // Run your program. Do you see your drum image?
 		jf.pack(); 
+		
         // Add this MouseListener to drumLabel
 		drum.addMouseListener(this);
+		cymbal.addMouseListener(this);
         // *** Write the code in the mouseClicked() method below
 		
         //  Set the layout of the panel to "new GridLayout()"
@@ -83,7 +85,12 @@ public class DrumKit implements MouseListener {
 
         //  If the user clicks on the drumImage...use the playSound method to play the drum sound.
         //  Test to see if it works before moving on.
-    	playSound("drum.wav");
+    	if (labelClicked == drum) {
+    		playSound("drum.wav");
+    }
+    	if (labelClicked == cymbal){
+    		playSound("cymbal.wav");
+    	}
 
     }
 
