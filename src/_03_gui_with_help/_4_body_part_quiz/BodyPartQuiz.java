@@ -103,7 +103,7 @@ public class BodyPartQuiz {
 			System.out.println("This man is Jack Black");
 		}
 		showNextImage();
-		JOptionPane.showInputDialog(score);
+		System.out.println("You're score is " + score);
 
 	}
 
