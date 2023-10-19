@@ -11,17 +11,20 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JButton;
 
-
 public class Soundeffects implements ActionListener{
+	JButton button1;
+	JButton button2;
+	JButton button3;
+	JButton button4;
 	public void showButtons(){
 		JFrame frame = new JFrame(); 
 		frame.setVisible(true);
 		JPanel panel = new JPanel();
 		frame.add(panel);
-		JButton button1 = new JButton();
-		JButton button2 = new JButton();
-		JButton button3 = new JButton();
-		JButton button4 = new JButton();
+		button1 = new JButton();
+		button2 = new JButton();
+		button3 = new JButton();
+		button4 = new JButton();
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
@@ -36,11 +39,22 @@ public class Soundeffects implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		Object button = e.getSource();
+		if (button == button1) {
+			playSound("sawing-wood-daniel_simon.wav");
+		}
+		if (button == button2) {
+			playSound("airplane.wav.crdownload");
+		}
+		if (button == button3) {
+			playSound("old-car.wav.crdownload");
+		}
+		if (button == button4) {
+			playSound("ufo.wav.crdownload");
+		}
 	}
 	private void playSound(String soundFile) {
-		String path = "src/_03_gui_from_scratch/_3_sound_effects_machine/";
+		String path = "src/_04_gui_from_scratch/_3_sound_effects_machine/";
 			File sound = new File(path+soundFile);
 			if (sound.exists()) {
 				new Thread(() -> {
